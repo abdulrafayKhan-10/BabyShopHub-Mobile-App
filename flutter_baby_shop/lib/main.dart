@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_baby_shop/Pages/ShopPage.dart';
 import 'package:page_transition/page_transition.dart';
 
-void main() => runApp(
-  MaterialApp(
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDF4z7mPwIhpE_Qu1t7xiBH9c-zdCJb3gQ",
+          appId: "1:61955691971:android:a400eb183ae61f56881976",
+          messagingSenderId: "61955691971",
+          projectId: "baby-shop-fad7d"));
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: HomePage()
-  )
-);
+    home: HomePage(),
+  ));
+}
 
 class HomePage extends StatefulWidget {
   @override
