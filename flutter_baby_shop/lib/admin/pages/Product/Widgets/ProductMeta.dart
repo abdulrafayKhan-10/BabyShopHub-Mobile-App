@@ -1,11 +1,12 @@
-import 'package:deshi_mart/providers/AddProductProvider.dart';
-import 'package:deshi_mart/widgets/HoverEffect.dart';
-import 'package:deshi_mart/widgets/MyDropDownButton.dart';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/providers/AddProductProvider.dart';
+import 'package:shop/admin/widgets/HoverEffect.dart';
+import 'package:shop/admin/widgets/MyDropDownButton.dart';
 
 import '../../../const/Values.dart';
 

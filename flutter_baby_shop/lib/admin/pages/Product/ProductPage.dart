@@ -1,11 +1,11 @@
-import 'package:deshi_mart/const/data.dart';
-import 'package:deshi_mart/pages/Product/Widgets/ProductsTableData.dart';
-import 'package:deshi_mart/providers/AddProductProvider.dart';
-import 'package:deshi_mart/widgets/MyIconButton.dart';
-import 'package:deshi_mart/widgets/PrimaryButton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/pages/Product/Widgets/ProductsTableData.dart';
+import 'package:shop/admin/providers/AddProductProvider.dart';
+import 'package:shop/admin/widgets/MyIconButton.dart';
+import 'package:shop/admin/widgets/PrimaryButton.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});

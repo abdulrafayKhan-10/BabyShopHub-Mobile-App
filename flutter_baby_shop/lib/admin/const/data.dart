@@ -1,6 +1,8 @@
-import 'package:deshi_mart/models/Category.dart';
-import 'package:deshi_mart/models/Product.dart';
-import 'package:deshi_mart/models/SubCategory.dart';
+
+
+import 'package:shop/admin/models/Category.dart';
+import 'package:shop/admin/models/Product.dart';
+import 'package:shop/admin/models/SubCategory.dart';
 
 var products = [
   Product(

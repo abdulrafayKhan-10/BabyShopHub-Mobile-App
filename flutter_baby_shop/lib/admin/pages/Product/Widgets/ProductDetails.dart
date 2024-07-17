@@ -1,12 +1,11 @@
-import 'package:deshi_mart/models/Category.dart';
-import 'package:deshi_mart/models/SubCategory.dart';
-import 'package:deshi_mart/pages/Category/Widget/CategoryDropDown.dart';
-import 'package:deshi_mart/pages/Category/Widget/SubCategory.dart';
-import 'package:deshi_mart/providers/CategoryProvider.dart';
-import 'package:deshi_mart/widgets/MyDropDownButton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/models/SubCategory.dart';
+import 'package:shop/admin/pages/Category/Widget/CategoryDropDown.dart';
+import 'package:shop/admin/pages/Category/Widget/SubCategory.dart';
+import 'package:shop/admin/providers/CategoryProvider.dart';
 
 import '../../../providers/AddProductProvider.dart';
 

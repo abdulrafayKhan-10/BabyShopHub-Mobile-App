@@ -1,5 +1,5 @@
-import 'package:deshi_mart/pages/Auth/Widget/AuthFields.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/pages/Auth/Widget/AuthFields.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});

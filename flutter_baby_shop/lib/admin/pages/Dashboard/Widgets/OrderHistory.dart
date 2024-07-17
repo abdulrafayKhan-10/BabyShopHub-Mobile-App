@@ -1,6 +1,7 @@
-import 'package:deshi_mart/configs/Colors.dart';
-import 'package:deshi_mart/models/Product.dart';
+
 import 'package:flutter/material.dart';
+import 'package:shop/admin/configs/Colors.dart';
+import 'package:shop/admin/models/Product.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import '../../../const/data.dart';

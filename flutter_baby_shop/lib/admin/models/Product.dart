@@ -1,4 +1,4 @@
-import 'package:deshi_mart/models/Review.dart';
+import 'package:shop/admin/models/Review.dart';
 
 class Product {
   String? id;

@@ -1,10 +1,11 @@
-import 'package:deshi_mart/pages/Auth/Auth.dart';
-import 'package:deshi_mart/pages/Category/AddCategory.dart';
-import 'package:deshi_mart/pages/HomePage/HomePage.dart';
-import 'package:deshi_mart/pages/Product/AddProduct.dart';
-import 'package:deshi_mart/pages/Splace/SplaceScreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shop/admin/pages/Auth/Auth.dart';
+import 'package:shop/admin/pages/Category/AddCategory.dart';
+import 'package:shop/admin/pages/HomePage/HomePage.dart';
+import 'package:shop/admin/pages/Product/AddProduct.dart';
+import 'package:shop/admin/pages/Splace/SplaceScreen.dart';
 
 final GoRouter router = GoRouter(
   routes: [

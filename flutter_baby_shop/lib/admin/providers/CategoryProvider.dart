@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:deshi_mart/configs/CustomNotication.dart';
-import 'package:deshi_mart/models/SubCategory.dart';
+
 import 'package:flutter/material.dart';
+import 'package:shop/admin/configs/CustomNotication.dart';
+import 'package:shop/admin/models/SubCategory.dart';
 import 'package:uuid/uuid.dart';
 
 import '../models/Category.dart';

@@ -1,9 +1,9 @@
-import 'package:deshi_mart/configs/AssetsPath.dart';
-import 'package:deshi_mart/providers/ThemeProvider.dart';
-import 'package:deshi_mart/widgets/DrawerMenu.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/configs/AssetsPath.dart';
+import 'package:shop/admin/widgets/DrawerMenu.dart';
 
 import '../providers/DrawerProvider.dart';
 

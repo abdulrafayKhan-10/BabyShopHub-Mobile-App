@@ -1,8 +1,7 @@
-import 'package:deshi_mart/configs/AssetsPath.dart';
-import 'package:deshi_mart/const/Values.dart';
-import 'package:deshi_mart/widgets/HoverEffect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop/admin/const/Values.dart';
+import 'package:shop/admin/widgets/HoverEffect.dart';
 
 class HomeStatics extends StatelessWidget {
   final String lable;

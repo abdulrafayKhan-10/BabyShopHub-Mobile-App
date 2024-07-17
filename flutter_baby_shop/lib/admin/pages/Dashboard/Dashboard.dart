@@ -1,11 +1,7 @@
-import 'package:deshi_mart/configs/AssetsPath.dart';
-import 'package:deshi_mart/pages/Dashboard/Widgets/OrderHistory.dart';
-import 'package:deshi_mart/pages/Dashboard/Widgets/Statics.dart';
-import 'package:deshi_mart/widgets/MyIconButton.dart';
-import 'package:deshi_mart/widgets/PrimaryButton.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop/admin/configs/AssetsPath.dart';
+import 'package:shop/admin/pages/Dashboard/Widgets/OrderHistory.dart';
+import 'package:shop/admin/pages/Dashboard/Widgets/Statics.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({super.key});

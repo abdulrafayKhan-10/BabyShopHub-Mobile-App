@@ -1,6 +1,6 @@
-import 'package:deshi_mart/providers/AuthProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/providers/AuthProvider.dart';
 
 import '../../../widgets/PrimaryButton.dart';
 

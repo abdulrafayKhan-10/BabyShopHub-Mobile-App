@@ -1,6 +1,6 @@
-import 'package:deshi_mart/models/SubCategory.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/models/SubCategory.dart';
 
 class SubCategorySearchDropDownButton extends StatefulWidget {
   final List<SubCategory> items;
@@ -59,7 +59,7 @@ class _SubCategorySearchDropDownButtonState
           ),
           items: widget.items
               .map((category) => DropdownMenuItem(
-                    value: category!,
+                    value: category,
                     child: Text(
                       category.title!,
                       style: TextStyle(

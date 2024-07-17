@@ -1,12 +1,12 @@
-import 'package:deshi_mart/configs/AssetsPath.dart';
-import 'package:deshi_mart/configs/Colors.dart';
-import 'package:deshi_mart/models/Category.dart';
 
-import 'package:deshi_mart/providers/CategoryProvider.dart';
-import 'package:deshi_mart/widgets/MyIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/configs/AssetsPath.dart';
+import 'package:shop/admin/configs/Colors.dart';
+import 'package:shop/admin/models/Category.dart';
+import 'package:shop/admin/providers/CategoryProvider.dart';
+import 'package:shop/admin/widgets/MyIconButton.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class CategoryDataTable extends StatelessWidget {

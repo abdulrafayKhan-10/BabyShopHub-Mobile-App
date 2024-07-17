@@ -1,9 +1,9 @@
-import 'package:deshi_mart/pages/Category/CategoryPage.dart';
-import 'package:deshi_mart/pages/Coupon/CouponPage.dart';
-import 'package:deshi_mart/pages/Dashboard/Dashboard.dart';
-import 'package:deshi_mart/pages/Product/ProductPage.dart';
-import 'package:deshi_mart/pages/Settings/SettingsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/pages/Category/CategoryPage.dart';
+import 'package:shop/admin/pages/Coupon/CouponPage.dart';
+import 'package:shop/admin/pages/Dashboard/Dashboard.dart';
+import 'package:shop/admin/pages/Product/ProductPage.dart';
+import 'package:shop/admin/pages/Settings/SettingsPage.dart';
 
 class DrawerProvider extends ChangeNotifier {
   int selectedPageIndex = 1;

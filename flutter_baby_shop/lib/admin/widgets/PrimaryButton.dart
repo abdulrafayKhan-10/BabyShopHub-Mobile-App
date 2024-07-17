@@ -1,5 +1,5 @@
-import 'package:deshi_mart/widgets/HoverEffect.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/widgets/HoverEffect.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String name;

@@ -1,11 +1,11 @@
-import 'package:deshi_mart/configs/Colors.dart';
-import 'package:deshi_mart/models/Product.dart';
-import 'package:deshi_mart/widgets/MyIconButton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/admin/configs/Colors.dart';
+import 'package:shop/admin/models/Product.dart';
+import 'package:shop/admin/widgets/MyIconButton.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-import '../../../const/data.dart';
 import '../../../providers/AddProductProvider.dart';
 
 class ProductsTableData extends StatelessWidget {

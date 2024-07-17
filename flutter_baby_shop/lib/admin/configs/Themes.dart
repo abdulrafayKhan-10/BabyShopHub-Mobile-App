@@ -1,5 +1,5 @@
-import 'package:deshi_mart/configs/Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/configs/Colors.dart';
 
 var lightTheme = ThemeData(
     brightness: Brightness.light,
