@@ -1,9 +1,7 @@
-import 'package:flutter/gestures.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shop/user/route/route_constants.dart';
-import 'package:shop/user/screens/auth/views/components/sign_up_form.dart';
-
-import '../../../constants.dart';
+import 'login_screen.dart'; // Import login screen
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,94 +11,94 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController deliveryAddressController = TextEditingController();
+  final TextEditingController profilePicController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.asset(
-              "assets/images/signUp_dark.png",
-              height: MediaQuery.of(context).size.height * 0.35,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(defaultPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Let’s get started!",
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  const SizedBox(height: defaultPadding / 2),
-                  const Text(
-                    "Please enter your valid data in order to create an account.",
-                  ),
-                  const SizedBox(height: defaultPadding),
-                  SignUpForm(formKey: _formKey),
-                  const SizedBox(height: defaultPadding),
-                  Row(
-                    children: [
-                      Checkbox(
-                        onChanged: (value) {},
-                        value: false,
-                      ),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            text: "I agree with the",
-                            children: [
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushNamed(
-                                        context, termsOfServicesScreenRoute);
-                                  },
-                                text: " Terms of service ",
-                                style: const TextStyle(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              const TextSpan(
-                                text: "& privacy policy.",
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: defaultPadding * 2),
-                  ElevatedButton(
-                    onPressed: () {
-                      // There is 2 more screens while user complete their profile
-                      // afre sign up, it's available on the pro version get it now
-                      // 🔗 https://theflutterway.gumroad.com/l/fluttershop
-                      Navigator.pushNamed(context, entryPointScreenRoute);
-                    },
-                    child: const Text("Continue"),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Do you have an account?"),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, logInScreenRoute);
-                        },
-                        child: const Text("Log in"),
-                      )
-                    ],
-                  ),
-                ],
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          child: ListView(
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Name'),
               ),
-            )
-          ],
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(labelText: 'Password'),
+                obscureText: true,
+              ),
+              TextFormField(
+                controller: deliveryAddressController,
+                decoration: const InputDecoration(labelText: 'Delivery Address'),
+              ),
+              TextFormField(
+                controller: profilePicController,
+                decoration: const InputDecoration(labelText: 'Profile Pic URL'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    // Register user with Firebase Authentication
+                    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    );
+
+                    // Get the user's ID
+                    String userId = userCredential.user!.uid;
+
+                    // Store additional user data in Firestore
+                    await FirebaseFirestore.instance.collection('UserCollection').doc(userId).set({
+                      'created_at': Timestamp.now(),
+                      'delivery_address': deliveryAddressController.text,
+                      'email': emailController.text,
+                      'name': nameController.text,
+                      'profile_pic': profilePicController.text,
+                      'role': 'user',
+                    });
+
+                    // Optionally navigate to another screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    );
+                  } catch (e) {
+                    // Handle error
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Sign Up failed: ${e.toString()}')),
+                    );
+                  }
+                },
+                child: const Text('Sign Up'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  );
+                },
+                child: const Text('Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );
