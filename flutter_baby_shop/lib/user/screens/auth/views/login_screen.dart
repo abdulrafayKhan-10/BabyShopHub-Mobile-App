@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/admin/pages/HomePage/HomePage.dart';
 import 'signup_screen.dart'; // Import sign up screen
 
 class LoginScreen extends StatefulWidget {
@@ -37,18 +39,45 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  try {
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                    // Navigate to home or another screen
-                  } catch (e) {
-                    // Handle error
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Login failed: ${e.toString()}')),
-                    );
+                  CollectionReference user =
+                      FirebaseFirestore.instance.collection('UserCollection');
+                  QuerySnapshot querySnapshot = await user
+                      .where('email', isEqualTo: emailController.text)
+                      .where('password', isEqualTo: passwordController.text)
+                      .get();
+
+                  if (querySnapshot.docs.isNotEmpty) {
+                    var userDoc = querySnapshot.docs.first;
+                    String role = userDoc['role'];
+                    String userId = userDoc.id;
+
+                    if (role == 'admin') {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    }
+                     else if (role == 'user') {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage()),
+                      );
+                    }
                   }
+
+                  // try {
+                  //   await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  //     email: emailController.text,
+                  //     password: passwordController.text,
+                  //   );
+                  //   // Navigate to home or another screen
+                  // } catch (e) {
+                  //   // Handle error
+                  //   ScaffoldMessenger.of(context).showSnackBar(
+                  //     SnackBar(content: Text('Login failed: ${e.toString()}')),
+                  //   );
+                  // }
                 },
                 child: const Text('Login'),
               ),
@@ -57,7 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpScreen()),
                   );
                 },
                 child: const Text('Sign Up'),

@@ -14,7 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController deliveryAddressController = TextEditingController();
+  final TextEditingController deliveryAddressController =
+      TextEditingController();
   final TextEditingController profilePicController = TextEditingController();
 
   @override
@@ -44,7 +45,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               TextFormField(
                 controller: deliveryAddressController,
-                decoration: const InputDecoration(labelText: 'Delivery Address'),
+                decoration:
+                    const InputDecoration(labelText: 'Delivery Address'),
               ),
               TextFormField(
                 controller: profilePicController,
@@ -55,33 +57,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: () async {
                   try {
                     // Register user with Firebase Authentication
-                    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
+                    // UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    //   email: emailController.text,
+                    //   password: passwordController.text,
+                    // );
 
-                    // Get the user's ID
-                    String userId = userCredential.user!.uid;
+                    // // Get the user's ID
+                    // String userId = userCredential.user!.uid;
 
                     // Store additional user data in Firestore
-                    await FirebaseFirestore.instance.collection('UserCollection').doc(userId).set({
-                      'created_at': Timestamp.now(),
-                      'delivery_address': deliveryAddressController.text,
-                      'email': emailController.text,
-                      'name': nameController.text,
-                      'profile_pic': profilePicController.text,
-                      'role': 'user',
-                    });
+                    CollectionReference user =
+                        FirebaseFirestore.instance.collection('UserCollection');
+                    QuerySnapshot querySnapshot = await user.get();
 
-                    // Optionally navigate to another screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginScreen()),
-                    );
+                    int newId = querySnapshot.size + 1;
+
+                    QuerySnapshot validate = await user
+                        .where('email', isEqualTo: emailController.text)
+                        .get();
+
+                    if (validate.docs.isNotEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Email Already exists')),
+                      );
+                    } else {
+                      await user.doc(newId.toString()).set({
+                        'created_at': Timestamp.now(),
+                        'delivery_address': deliveryAddressController.text,
+                        'email': emailController.text,
+                        'name': nameController.text,
+                        'password': passwordController.text,
+                        'profile_pic': profilePicController.text,
+                        'role': 'user',
+                      });
+
+                      // Optionally navigate to another screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    }
                   } catch (e) {
                     // Handle error
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Sign Up failed: ${e.toString()}')),
+                      SnackBar(
+                          content: Text('Sign Up failed: ${e.toString()}')),
                     );
                   }
                 },
@@ -92,7 +113,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
                   );
                 },
                 child: const Text('Login'),
