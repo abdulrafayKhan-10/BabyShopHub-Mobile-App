@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/admin/pages/HomePage/HomePage.dart';
+import 'package:shop/user/screens/home/views/home_screen.dart';
 import 'signup_screen.dart'; // Import sign up screen
 
 class LoginScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: const InputDecoration(labelText: 'Email'),
                 keyboardType: TextInputType.emailAddress,
               ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
@@ -58,10 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     }
                      else if (role == 'user') {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomePage()),
+                            builder: (context) => HomeScreen()),
                       );
                     }
                   }

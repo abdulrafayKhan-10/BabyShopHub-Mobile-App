@@ -21,15 +21,16 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             const SliverToBoxAdapter(child: OffersCarouselAndCategories()),
             const SliverToBoxAdapter(child: PopularProducts()),
-            const SliverPadding(
-              padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5),
-              sliver: SliverToBoxAdapter(child: FlashSale()),
-            ),
+            // const SliverPadding(
+            //   padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5),
+            //   sliver: SliverToBoxAdapter(child: FlashSale()),
+            // ),
             SliverToBoxAdapter(
               child: Column(
                 children: [
                   // While loading use 👇
                   // const BannerMSkelton(),‚
+                  const SizedBox(height: defaultPadding * 1.5),
                   BannerSStyle1(
                     title: "New \narrival",
                     subtitle: "SPECIAL OFFER",
@@ -43,8 +44,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SliverToBoxAdapter(child: BestSellers()),
-            const SliverToBoxAdapter(child: MostPopular()),
+            // const SliverToBoxAdapter(child: BestSellers()),
+            // const SliverToBoxAdapter(child: MostPopular()),
             SliverToBoxAdapter(
               child: Column(
                 children: [
@@ -53,15 +54,15 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: defaultPadding / 4),
                   // While loading use 👇
                   // const BannerSSkelton(),
-                  BannerSStyle5(
-                    title: "Black \nfriday",
-                    subtitle: "50% Off",
-                    bottomText: "Collection".toUpperCase(),
-                    press: () {
-                      Navigator.pushNamed(context, onSaleScreenRoute);
-                    },
-                  ),
-                  const SizedBox(height: defaultPadding / 4),
+                  // BannerSStyle5(
+                  //   title: "Black \nfriday",
+                  //   subtitle: "50% Off",
+                  //   bottomText: "Collection".toUpperCase(),
+                  //   press: () {
+                  //     Navigator.pushNamed(context, onSaleScreenRoute);
+                  //   },
+                  // ),
+                  // const SizedBox(height: defaultPadding / 4),
                 ],
               ),
             ),

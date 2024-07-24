@@ -33,39 +33,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 controller: nameController,
                 decoration: const InputDecoration(labelText: 'Name'),
               ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(labelText: 'Email'),
                 keyboardType: TextInputType.emailAddress,
               ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
               ),
-              TextFormField(
-                controller: deliveryAddressController,
-                decoration:
-                    const InputDecoration(labelText: 'Delivery Address'),
-              ),
-              TextFormField(
-                controller: profilePicController,
-                decoration: const InputDecoration(labelText: 'Profile Pic URL'),
-              ),
+              
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
                   try {
-                    // Register user with Firebase Authentication
-                    // UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    //   email: emailController.text,
-                    //   password: passwordController.text,
-                    // );
-
-                    // // Get the user's ID
-                    // String userId = userCredential.user!.uid;
-
-                    // Store additional user data in Firestore
                     CollectionReference user =
                         FirebaseFirestore.instance.collection('UserCollection');
                     QuerySnapshot querySnapshot = await user.get();
